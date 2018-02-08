@@ -13,5 +13,9 @@
     "mocha": "^5.0.0",
     "solc": "^0.4.19",
     "web3": "^1.0.0-beta.26"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
   }
 }
