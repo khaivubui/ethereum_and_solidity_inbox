@@ -14,8 +14,8 @@ const INITIAL_MESSAGE = 'Hi there!';
 
   const accounts = await web3.eth.getAccounts();
   const contractInstance = await new web3.eth.Contract(jsonInterface)
-    .deploy({ data, arguments })
+    .deploy({ data, arguments: [INITIAL_MESSAGE] })
     .send({ gas: '1000000', from: accounts[0] });
 
   console.log(contractInstance.options.address);
-})(INITIAL_MESSAGE);
+})();
