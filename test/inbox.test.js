@@ -9,6 +9,7 @@ const { interface: compiledInterface, bytecode } = require('../compile');
 let accounts;
 let inbox;
 const INITIAL_MESSAGE = 'Hi there!';
+const NEW_MESSAGE = 'Bye there!';
 
 beforeEach(async () => {
   // Get a list of all accounts
@@ -30,5 +31,12 @@ describe('Inbox', () => {
   it('has an initial message', async () => {
     const message = await inbox.methods.message().call();
     assert.equal(message, INITIAL_MESSAGE);
+  });
+
+  it('can change the message', async () => {
+    await inbox.methods.setMessage(NEW_MESSAGE).send({ from: accounts[0] });
+
+    const message = await inbox.methods.message().call();
+    assert.equal(NEW_MESSAGE, message);
   });
 });
